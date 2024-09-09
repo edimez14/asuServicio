@@ -36,10 +36,14 @@ public class Iniciar extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton_salir = new javax.swing.JButton();
+        jLabel_prueba = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
+        setMaximumSize(new java.awt.Dimension(742, 551));
         setUndecorated(true);
+        setSize(new java.awt.Dimension(742, 551));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton_salir.setBackground(new java.awt.Color(0, 0, 0));
@@ -52,6 +56,10 @@ public class Iniciar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
+
+        jLabel_prueba.setFont(new java.awt.Font("sansserif", 1, 36)); // NOI18N
+        jLabel_prueba.setText("Bienvenido");
+        getContentPane().add(jLabel_prueba, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -101,5 +109,6 @@ public class Iniciar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_salir;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel_prueba;
     // End of variables declaration//GEN-END:variables
 }

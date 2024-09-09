@@ -43,20 +43,20 @@ public class Registrar extends javax.swing.JFrame {
         jButton_volver = new javax.swing.JButton();
         jLabel_password1 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jLabel_user1 = new javax.swing.JLabel();
-        jTextField_user1 = new javax.swing.JTextField();
-        jLabel_user2 = new javax.swing.JLabel();
-        jTextField_user2 = new javax.swing.JTextField();
-        jTextField_user3 = new javax.swing.JTextField();
-        jLabel_user3 = new javax.swing.JLabel();
+        jLabel_user_email = new javax.swing.JLabel();
+        jTextField_user_email = new javax.swing.JTextField();
+        jLabel_user_pNumber = new javax.swing.JLabel();
+        jTextField_user_pNumber = new javax.swing.JTextField();
+        jTextField_user_name = new javax.swing.JTextField();
+        jLabel_user_name = new javax.swing.JLabel();
         jButton_salir = new javax.swing.JButton();
         jLabel_registrarse = new javax.swing.JLabel();
         FonReg = new javax.swing.JLabel();
         jButton_registrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(742, 551));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo_asuServicio(1).png"))); // NOI18N
@@ -69,7 +69,7 @@ public class Registrar extends javax.swing.JFrame {
         jLabel_user.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_user.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_user.setText("Usuario");
-        getContentPane().add(jLabel_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, -1));
+        getContentPane().add(jLabel_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
 
         jTextField_user.setBackground(new java.awt.Color(190, 221, 255));
         jTextField_user.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -79,7 +79,7 @@ public class Registrar extends javax.swing.JFrame {
                 jTextField_userActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 140, 20));
+        getContentPane().add(jTextField_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 170, 20));
 
         jLabel_password.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_password.setForeground(new java.awt.Color(255, 255, 255));
@@ -89,7 +89,7 @@ public class Registrar extends javax.swing.JFrame {
         jPasswordField.setBackground(new java.awt.Color(190, 221, 255));
         jPasswordField.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jPasswordField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        getContentPane().add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 140, 20));
+        getContentPane().add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 170, 20));
 
         jButton_volver.setBackground(new java.awt.Color(0, 0, 0));
         jButton_volver.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -105,57 +105,57 @@ public class Registrar extends javax.swing.JFrame {
         jLabel_password1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_password1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_password1.setText("Contraseña");
-        getContentPane().add(jLabel_password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        getContentPane().add(jLabel_password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, -1, -1));
 
         jPasswordField1.setBackground(new java.awt.Color(190, 221, 255));
         jPasswordField1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 140, 20));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 170, 20));
 
-        jLabel_user1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel_user1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_user1.setText("Correo electronico");
-        getContentPane().add(jLabel_user1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
+        jLabel_user_email.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel_user_email.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_user_email.setText("Correo electronico");
+        getContentPane().add(jLabel_user_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
 
-        jTextField_user1.setBackground(new java.awt.Color(190, 221, 255));
-        jTextField_user1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jTextField_user1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        jTextField_user1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_user_email.setBackground(new java.awt.Color(190, 221, 255));
+        jTextField_user_email.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jTextField_user_email.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        jTextField_user_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_user1ActionPerformed(evt);
+                jTextField_user_emailActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_user1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 140, 20));
+        getContentPane().add(jTextField_user_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 180, 20));
 
-        jLabel_user2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel_user2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_user2.setText("Numero de celular");
-        getContentPane().add(jLabel_user2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
+        jLabel_user_pNumber.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel_user_pNumber.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_user_pNumber.setText("Numero de celular");
+        getContentPane().add(jLabel_user_pNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
 
-        jTextField_user2.setBackground(new java.awt.Color(190, 221, 255));
-        jTextField_user2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jTextField_user2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        jTextField_user2.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_user_pNumber.setBackground(new java.awt.Color(190, 221, 255));
+        jTextField_user_pNumber.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jTextField_user_pNumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        jTextField_user_pNumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_user2ActionPerformed(evt);
+                jTextField_user_pNumberActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_user2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 140, 20));
+        getContentPane().add(jTextField_user_pNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 400, 180, 20));
 
-        jTextField_user3.setBackground(new java.awt.Color(190, 221, 255));
-        jTextField_user3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jTextField_user3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        jTextField_user3.addActionListener(new java.awt.event.ActionListener() {
+        jTextField_user_name.setBackground(new java.awt.Color(190, 221, 255));
+        jTextField_user_name.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        jTextField_user_name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
+        jTextField_user_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_user3ActionPerformed(evt);
+                jTextField_user_nameActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_user3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 140, 20));
+        getContentPane().add(jTextField_user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 180, 20));
 
-        jLabel_user3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel_user3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_user3.setText("Nombre completo");
-        getContentPane().add(jLabel_user3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
+        jLabel_user_name.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jLabel_user_name.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_user_name.setText("Nombre completo");
+        getContentPane().add(jLabel_user_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
 
         jButton_salir.setBackground(new java.awt.Color(0, 0, 0));
         jButton_salir.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -194,17 +194,17 @@ public class Registrar extends javax.swing.JFrame {
         verlogin.setVisible(true);
     }//GEN-LAST:event_jButton_volverActionPerformed
 
-    private void jTextField_user1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user1ActionPerformed
+    private void jTextField_user_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_user1ActionPerformed
+    }//GEN-LAST:event_jTextField_user_emailActionPerformed
 
-    private void jTextField_user2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user2ActionPerformed
+    private void jTextField_user_pNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user_pNumberActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_user2ActionPerformed
+    }//GEN-LAST:event_jTextField_user_pNumberActionPerformed
 
-    private void jTextField_user3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user3ActionPerformed
+    private void jTextField_user_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user_nameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_user3ActionPerformed
+    }//GEN-LAST:event_jTextField_user_nameActionPerformed
 
     private void jButton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salirActionPerformed
         System.exit(0);
@@ -260,15 +260,15 @@ public class Registrar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_password1;
     private javax.swing.JLabel jLabel_registrarse;
     private javax.swing.JLabel jLabel_user;
-    private javax.swing.JLabel jLabel_user1;
-    private javax.swing.JLabel jLabel_user2;
-    private javax.swing.JLabel jLabel_user3;
+    private javax.swing.JLabel jLabel_user_email;
     private javax.swing.JLabel jLabel_user_logo;
+    private javax.swing.JLabel jLabel_user_name;
+    private javax.swing.JLabel jLabel_user_pNumber;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField_user;
-    private javax.swing.JTextField jTextField_user1;
-    private javax.swing.JTextField jTextField_user2;
-    private javax.swing.JTextField jTextField_user3;
+    private javax.swing.JTextField jTextField_user_email;
+    private javax.swing.JTextField jTextField_user_name;
+    private javax.swing.JTextField jTextField_user_pNumber;
     // End of variables declaration//GEN-END:variables
 }
