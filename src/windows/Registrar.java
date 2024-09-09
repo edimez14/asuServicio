@@ -4,8 +4,14 @@
  */
 package windows;
 
+import database.Conexion;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -24,6 +30,63 @@ public class Registrar extends javax.swing.JFrame {
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("assets/logo_asuServicio(1).png"));
         return retValue;
+    }
+    
+    //metodo para insertar los datos de los usuarios que se registren 
+    private void registrarUsuario() {
+        //obtenemos los valores de los campos de texto
+        String nombre = jTextField_user_name.getText();
+        String email = jTextField_user_email.getText();
+        String pNumber = jTextField_user_pNumber.getText();
+        String username = jTextField_user.getText();
+        String password = new String(jPasswordField1.getPassword());
+        String confirmPassword = new String(jPasswordField.getPassword());
+        
+        //verificar si las contraseñas coinciden
+        if (!password.equals(confirmPassword)) {
+            JOptionPane.showMessageDialog(this, "Las contraseñas no coninciden");
+            return;
+        }
+        
+        //verificamos que no haya campos vacios
+        if (nombre.isEmpty() || email.isEmpty() || pNumber.isEmpty() || username.isEmpty() || password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos");
+            return;
+        }
+        
+        //nos conectamos a la base de datos
+        Conexion conexion = Conexion.getInstancia();
+        Connection conr = conexion.conectar();
+        
+        //preparamos la sentencia para insertar datos en la base de datos
+        String sql = "INSERT INTO user_db (user_full_name, user_email, user_pNumber, user_name, user_password) VALUES (?, ?, ?, ?, ?)";
+    
+        try (PreparedStatement psr = conr.prepareStatement(sql)) {
+            // Establecemos los parámetros en la consulta
+            psr.setString(1, nombre);
+            psr.setString(2, email);
+            psr.setString(3, pNumber);
+            psr.setString(4, username);
+            psr.setString(5, password);
+            
+            //ejecutamos la consulta
+            int rowsAffected = psr.executeUpdate();
+            
+            //condiciones para verificar si se logro registrar el nuevo usuario
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(this, "Nuevo usuario, registrado con exito");
+                login verlogin = new login();
+                verlogin.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al registrar el nuevo usuario");
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error de la base de datos: " + e.getMessage());
+        } finally {
+            //desconectar de la base de datos
+            conexion.desconectar();
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -190,8 +253,7 @@ public class Registrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_userActionPerformed
 
     private void jButton_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_volverActionPerformed
-        login verlogin = new login();
-        verlogin.setVisible(true);
+        // ---->
     }//GEN-LAST:event_jButton_volverActionPerformed
 
     private void jTextField_user_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user_emailActionPerformed
@@ -209,10 +271,10 @@ public class Registrar extends javax.swing.JFrame {
     private void jButton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton_salirActionPerformed
-
+    
+    // En el botón de registrar, llamamos a este método
     private void jButton_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_registrarActionPerformed
-        Iniciar verIniciar=new Iniciar();
-        verIniciar.setVisible(true);
+        registrarUsuario();
     }//GEN-LAST:event_jButton_registrarActionPerformed
 
     /**
