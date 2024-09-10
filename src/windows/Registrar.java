@@ -77,6 +77,7 @@ public class Registrar extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Nuevo usuario, registrado con exito");
                 login verlogin = new login();
                 verlogin.setVisible(true);
+                dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Error al registrar el nuevo usuario");
             }
@@ -253,7 +254,9 @@ public class Registrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_userActionPerformed
 
     private void jButton_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_volverActionPerformed
-        // ---->
+       login verlogin=new login();
+        verlogin.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton_volverActionPerformed
 
     private void jTextField_user_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user_emailActionPerformed

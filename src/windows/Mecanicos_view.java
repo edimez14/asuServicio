@@ -39,12 +39,12 @@ public class Mecanicos_view extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton_salir = new javax.swing.JButton();
+        jButton_volver = new javax.swing.JButton();
         jLabel_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(742, 551));
         setSize(new java.awt.Dimension(744, 551));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -71,6 +71,17 @@ public class Mecanicos_view extends javax.swing.JFrame {
         });
         getContentPane().add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
 
+        jButton_volver.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_volver.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        jButton_volver.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_volver.setText("Volver");
+        jButton_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_volverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, -1, -1));
+
         jLabel_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
         getContentPane().add(jLabel_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -81,6 +92,12 @@ public class Mecanicos_view extends javax.swing.JFrame {
         
         System.exit(0);
     }//GEN-LAST:event_jButton_salirActionPerformed
+
+    private void jButton_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_volverActionPerformed
+        Iniciar verIniciar = new Iniciar();
+        verIniciar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton_volverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,6 +136,7 @@ public class Mecanicos_view extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_salir;
+    private javax.swing.JButton jButton_volver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

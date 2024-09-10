@@ -35,16 +35,93 @@ public class Iniciar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Label_Menu = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        Menu_Perfil = new javax.swing.JLabel();
+        Menu_Categorias = new javax.swing.JLabel();
+        Menu_Configuracion = new javax.swing.JLabel();
+        Menu_CerrarSe = new javax.swing.JLabel();
+        X_Cerrar = new javax.swing.JLabel();
         jButton_salir = new javax.swing.JButton();
         jButton_mecanico = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
-        setMaximumSize(new java.awt.Dimension(742, 551));
         setUndecorated(true);
         setSize(new java.awt.Dimension(742, 551));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Label_Menu.setBackground(new java.awt.Color(0, 0, 0));
+        Label_Menu.setForeground(new java.awt.Color(255, 255, 255));
+        Label_Menu.setText("Menu");
+        Label_Menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Label_MenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Label_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        Menu_Perfil.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Menu_Perfil.setText("Perfil");
+
+        Menu_Categorias.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Menu_Categorias.setText("Categorias");
+
+        Menu_Configuracion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Menu_Configuracion.setText("Configuracion");
+
+        Menu_CerrarSe.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        Menu_CerrarSe.setText("Cerrar Sesion");
+
+        X_Cerrar.setText("X");
+        X_Cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                X_CerrarMouseClicked(evt);
+            }
+        });
+
+        jPanel1.setVisible(false);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Menu_Configuracion)
+                            .addComponent(Menu_CerrarSe, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(Menu_Categorias))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(Menu_Perfil)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(X_Cerrar)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(X_Cerrar)
+                .addGap(69, 69, 69)
+                .addComponent(Menu_Perfil)
+                .addGap(18, 18, 18)
+                .addComponent(Menu_Categorias)
+                .addGap(18, 18, 18)
+                .addComponent(Menu_Configuracion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
+                .addComponent(Menu_CerrarSe)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 550));
 
         jButton_salir.setBackground(new java.awt.Color(0, 0, 0));
         jButton_salir.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -66,8 +143,8 @@ public class Iniciar extends javax.swing.JFrame {
         });
         getContentPane().add(jButton_mecanico, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,7 +156,18 @@ public class Iniciar extends javax.swing.JFrame {
     private void jButton_mecanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_mecanicoActionPerformed
         Mecanicos_view verMecanicos_view = new Mecanicos_view();
         verMecanicos_view.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton_mecanicoActionPerformed
+
+    private void Label_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Label_MenuActionPerformed
+        jPanel1.setVisible(true);
+        Label_Menu.setVisible(false);
+    }//GEN-LAST:event_Label_MenuActionPerformed
+
+    private void X_CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_X_CerrarMouseClicked
+        jPanel1.setVisible(false);
+        Label_Menu.setVisible(true);
+    }//GEN-LAST:event_X_CerrarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -117,8 +205,15 @@ public class Iniciar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton Label_Menu;
+    private javax.swing.JLabel Menu_Categorias;
+    private javax.swing.JLabel Menu_CerrarSe;
+    private javax.swing.JLabel Menu_Configuracion;
+    private javax.swing.JLabel Menu_Perfil;
+    private javax.swing.JLabel X_Cerrar;
     private javax.swing.JButton jButton_mecanico;
     private javax.swing.JButton jButton_salir;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

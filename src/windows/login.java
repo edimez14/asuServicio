@@ -203,6 +203,7 @@ public class login extends javax.swing.JFrame {
         if (verificacion(email, password)) {
             Iniciar verIniciar=new Iniciar();
             verIniciar.setVisible(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
         }
@@ -211,6 +212,7 @@ public class login extends javax.swing.JFrame {
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
         Registrar verRegistrar=new Registrar();
         verRegistrar.setVisible(true);
+        dispose();
     }//GEN-LAST:event_registerActionPerformed
 
     /**
