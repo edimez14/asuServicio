@@ -6,6 +6,7 @@ package windows;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,13 +36,13 @@ public class Iniciar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Label_Menu = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        Menu_Perfil = new javax.swing.JLabel();
-        Menu_Categorias = new javax.swing.JLabel();
-        Menu_Configuracion = new javax.swing.JLabel();
-        Menu_CerrarSe = new javax.swing.JLabel();
-        X_Cerrar = new javax.swing.JLabel();
+        Button_Menu = new javax.swing.JButton();
+        jPanel_Menu = new javax.swing.JPanel();
+        jButton_cerrar = new javax.swing.JButton();
+        jButton_perfil = new javax.swing.JButton();
+        jButton_categorias = new javax.swing.JButton();
+        jButton_configuracion = new javax.swing.JButton();
+        jButton_cerrar_sesion = new javax.swing.JButton();
         jButton_salir = new javax.swing.JButton();
         jButton_mecanico = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
@@ -52,76 +53,114 @@ public class Iniciar extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(742, 551));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Label_Menu.setBackground(new java.awt.Color(0, 0, 0));
-        Label_Menu.setForeground(new java.awt.Color(255, 255, 255));
-        Label_Menu.setText("Menu");
-        Label_Menu.addActionListener(new java.awt.event.ActionListener() {
+        Button_Menu.setBackground(new java.awt.Color(0, 0, 0));
+        Button_Menu.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        Button_Menu.setForeground(new java.awt.Color(255, 255, 255));
+        Button_Menu.setText("Menu");
+        Button_Menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Label_MenuActionPerformed(evt);
+                Button_MenuActionPerformed(evt);
             }
         });
-        getContentPane().add(Label_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        getContentPane().add(Button_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        Menu_Perfil.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Menu_Perfil.setText("Perfil");
+        jPanel_Menu.setBackground(new java.awt.Color(1, 72, 127));
 
-        Menu_Categorias.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Menu_Categorias.setText("Categorias");
-
-        Menu_Configuracion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Menu_Configuracion.setText("Configuracion");
-
-        Menu_CerrarSe.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Menu_CerrarSe.setText("Cerrar Sesion");
-
-        X_Cerrar.setText("X");
-        X_Cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                X_CerrarMouseClicked(evt);
+        jButton_cerrar.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_cerrar.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        jButton_cerrar.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_cerrar.setText("X");
+        jButton_cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_cerrarActionPerformed(evt);
             }
         });
 
-        jPanel1.setVisible(false);
+        jButton_perfil.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_perfil.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jButton_perfil.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_perfil.setText("Perfil");
+        jButton_perfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_perfilActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Menu_Configuracion)
-                            .addComponent(Menu_CerrarSe, javax.swing.GroupLayout.Alignment.LEADING)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(Menu_Categorias))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(Menu_Perfil)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(X_Cerrar)
+        jButton_categorias.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_categorias.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jButton_categorias.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_categorias.setText("Categorias");
+        jButton_categorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_categoriasActionPerformed(evt);
+            }
+        });
+
+        jButton_configuracion.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_configuracion.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jButton_configuracion.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_configuracion.setText("Configuracion");
+        jButton_configuracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_configuracionActionPerformed(evt);
+            }
+        });
+
+        jButton_cerrar_sesion.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_cerrar_sesion.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jButton_cerrar_sesion.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_cerrar_sesion.setText("Cerrar Sesion");
+        jButton_cerrar_sesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_cerrar_sesionActionPerformed(evt);
+            }
+        });
+
+        jPanel_Menu.setVisible(false);
+
+        javax.swing.GroupLayout jPanel_MenuLayout = new javax.swing.GroupLayout(jPanel_Menu);
+        jPanel_Menu.setLayout(jPanel_MenuLayout);
+        jPanel_MenuLayout.setHorizontalGroup(
+            jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_MenuLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton_cerrar))
+                    .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                        .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addComponent(jButton_perfil))
+                            .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jButton_categorias)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton_cerrar_sesion)
+                    .addComponent(jButton_configuracion))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        jPanel_MenuLayout.setVerticalGroup(
+            jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_MenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton_cerrar)
+                .addGap(54, 54, 54)
+                .addComponent(jButton_perfil)
+                .addGap(18, 18, 18)
+                .addComponent(jButton_categorias)
+                .addGap(18, 18, 18)
+                .addComponent(jButton_configuracion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
+                .addComponent(jButton_cerrar_sesion)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(X_Cerrar)
-                .addGap(69, 69, 69)
-                .addComponent(Menu_Perfil)
-                .addGap(18, 18, 18)
-                .addComponent(Menu_Categorias)
-                .addGap(18, 18, 18)
-                .addComponent(Menu_Configuracion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 295, Short.MAX_VALUE)
-                .addComponent(Menu_CerrarSe)
-                .addContainerGap())
-        );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 550));
+        getContentPane().add(jPanel_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 550));
 
         jButton_salir.setBackground(new java.awt.Color(0, 0, 0));
         jButton_salir.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -159,15 +198,34 @@ public class Iniciar extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton_mecanicoActionPerformed
 
-    private void Label_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Label_MenuActionPerformed
-        jPanel1.setVisible(true);
-        Label_Menu.setVisible(false);
-    }//GEN-LAST:event_Label_MenuActionPerformed
+    private void Button_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_MenuActionPerformed
+        jPanel_Menu.setVisible(true);
+        Button_Menu.setVisible(false);
+    }//GEN-LAST:event_Button_MenuActionPerformed
 
-    private void X_CerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_X_CerrarMouseClicked
-        jPanel1.setVisible(false);
-        Label_Menu.setVisible(true);
-    }//GEN-LAST:event_X_CerrarMouseClicked
+    private void jButton_cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cerrarActionPerformed
+        jPanel_Menu.setVisible(false);
+        Button_Menu.setVisible(true);
+    }//GEN-LAST:event_jButton_cerrarActionPerformed
+
+    private void jButton_perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_perfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_perfilActionPerformed
+
+    private void jButton_categoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_categoriasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_categoriasActionPerformed
+
+    private void jButton_configuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_configuracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_configuracionActionPerformed
+
+    private void jButton_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cerrar_sesionActionPerformed
+        JOptionPane.showMessageDialog(this, "Sesion cerrada con exito");
+        login verlogin = new login();
+        verlogin.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton_cerrar_sesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,15 +263,15 @@ public class Iniciar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Button_Menu;
     private javax.swing.JLabel Fondo;
-    private javax.swing.JButton Label_Menu;
-    private javax.swing.JLabel Menu_Categorias;
-    private javax.swing.JLabel Menu_CerrarSe;
-    private javax.swing.JLabel Menu_Configuracion;
-    private javax.swing.JLabel Menu_Perfil;
-    private javax.swing.JLabel X_Cerrar;
+    private javax.swing.JButton jButton_categorias;
+    private javax.swing.JButton jButton_cerrar;
+    private javax.swing.JButton jButton_cerrar_sesion;
+    private javax.swing.JButton jButton_configuracion;
     private javax.swing.JButton jButton_mecanico;
+    private javax.swing.JButton jButton_perfil;
     private javax.swing.JButton jButton_salir;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel_Menu;
     // End of variables declaration//GEN-END:variables
 }
