@@ -6,20 +6,35 @@ package windows;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author prestamo
  */
-public class Start extends javax.swing.JFrame {
+public class Start extends javax.swing.JFrame implements Runnable {
 
-    /**
-     * Creates new form Start
-     */
+    /*
+    private JLabel labelImagen;
+    private Timer timer;
+    private int indiceImagen = 0;
+    private String[] listaImagenes = {
+        "src/assets/esta barado/1.png",
+        "src/assets/esta barado/2.png",
+        "src/assets/esta barado/3.png",
+        "src/assets/esta barado/4.png",
+        "src/assets/esta barado/5.png"
+    };
+    */
+    Thread hilo=null;//variable global
     public Start() {
         initComponents();
         this.setLocationRelativeTo(null);
+        hilo = new Thread((Runnable) this);
+        hilo.start();
     }
+    
+    
     
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("assets/logo_asuServicio(1).png"));
@@ -36,6 +51,7 @@ public class Start extends javax.swing.JFrame {
 
         jButton_salir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel_carousel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
@@ -56,7 +72,8 @@ public class Start extends javax.swing.JFrame {
         getContentPane().add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Iniciar sesió (1).png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, 80));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, 80));
+        getContentPane().add(jLabel_carousel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 420, 300));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -67,7 +84,7 @@ public class Start extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 223, 240, 70));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 240, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -82,7 +99,23 @@ public class Start extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void run() {
+        while (hilo != null) {
+         try {
+
+          for (int i = 1; i <= 5; i++) {
+            jLabel_carousel.setIcon(new ImageIcon(getClass().getResource("/assets/img_carousel_" + i + ".png")));
+            Thread.sleep(3000);
+
+          }
+         } catch (Exception e) {
+          System.out.println(e.getMessage());
+         }
+        }
+    }
     /**
+     * 
+     * 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -122,5 +155,6 @@ public class Start extends javax.swing.JFrame {
     private javax.swing.JButton jButton_salir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel_carousel;
     // End of variables declaration//GEN-END:variables
 }

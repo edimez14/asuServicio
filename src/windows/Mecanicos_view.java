@@ -7,6 +7,7 @@ package windows;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -20,6 +21,9 @@ public class Mecanicos_view extends javax.swing.JFrame {
     public Mecanicos_view() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //jLabel1.putClientProperty("JComponent.roundRect", true);
+        UIManager.put( "jLabel.arc", 999 );
+        
     }
     
      public Image getIconImage() {
