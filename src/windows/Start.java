@@ -7,25 +7,14 @@ package windows;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author prestamo
- */
+public class Start extends javax.swing.JFrame implements Runnable {
+ * @author prestamo*/
 public class Start extends javax.swing.JFrame implements Runnable {
 
-    /*
-    private JLabel labelImagen;
-    private Timer timer;
-    private int indiceImagen = 0;
-    private String[] listaImagenes = {
-        "src/assets/esta barado/1.png",
-        "src/assets/esta barado/2.png",
-        "src/assets/esta barado/3.png",
-        "src/assets/esta barado/4.png",
-        "src/assets/esta barado/5.png"
-    };
-    */
     Thread hilo=null;//variable global
     public Start() {
         initComponents();
@@ -105,11 +94,11 @@ public class Start extends javax.swing.JFrame implements Runnable {
 
           for (int i = 1; i <= 5; i++) {
             jLabel_carousel.setIcon(new ImageIcon(getClass().getResource("/assets/img_carousel_" + i + ".png")));
-            Thread.sleep(3000);
+            Thread.sleep(2000);
 
           }
          } catch (Exception e) {
-          System.out.println(e.getMessage());
+          JOptionPane.showMessageDialog(this, "Error al cargar las imagenes en el jPanel: " + e.getMessage());
          }
         }
     }

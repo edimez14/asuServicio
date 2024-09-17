@@ -4,32 +4,22 @@
  */
 package windows;
 
-import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
 
 /**
  *
- * @author eliro
+ * @author prestamo
  */
-public class Mecanicos_view extends javax.swing.JFrame {
+public class Perfil extends javax.swing.JFrame {
 
     /**
-     * Creates new form Mecanicos_view
+     * Creates new form Perfil
      */
-    public Mecanicos_view() {
+    public Perfil() {
         initComponents();
         this.setLocationRelativeTo(null);
-        //jLabel1.putClientProperty("JComponent.roundRect", true);
-        UIManager.put( "jLabel.arc", 999 );
-        
     }
-    
-     public Image getIconImage() {
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("assets/logo_asuServicio(1).png"));
-        return retValue;
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,16 +29,21 @@ public class Mecanicos_view extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel_foto_perfil = new javax.swing.JLabel();
+        jLabel_nameuser_data = new javax.swing.JLabel();
+        jLabel_password_data = new javax.swing.JLabel();
+        jLabel_fullname_data = new javax.swing.JLabel();
+        jLabel_email_data = new javax.swing.JLabel();
+        jLabel_nameuser = new javax.swing.JLabel();
+        jLabel_password = new javax.swing.JLabel();
+        jLabel_email = new javax.swing.JLabel();
+        jLabel_fullname = new javax.swing.JLabel();
         jButton_salir = new javax.swing.JButton();
         jButton_Menu = new javax.swing.JButton();
         jPanel_Menu = new javax.swing.JPanel();
         jButton_cerrar_panel = new javax.swing.JButton();
-        jButton_Perfil = new javax.swing.JButton();
         jButton_Cerrar_sesion = new javax.swing.JButton();
+        jButton_Categorias = new javax.swing.JButton();
         jButton_Configuracion = new javax.swing.JButton();
         jButton_volver = new javax.swing.JButton();
         jLabel_fondo = new javax.swing.JLabel();
@@ -56,20 +51,42 @@ public class Mecanicos_view extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
         setUndecorated(true);
-        setSize(new java.awt.Dimension(744, 551));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/1.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
+        jLabel_foto_perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/user_logo.png"))); // NOI18N
+        getContentPane().add(jLabel_foto_perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/2.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
+        jLabel_nameuser_data.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_nameuser_data.setText("edimez14");
+        getContentPane().add(jLabel_nameuser_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/3.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, -1, -1));
+        jLabel_password_data.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_password_data.setText("**************");
+        getContentPane().add(jLabel_password_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/4.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, -1, -1));
+        jLabel_fullname_data.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_fullname_data.setText("edizon alexander meza leal");
+        getContentPane().add(jLabel_fullname_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, -1));
+
+        jLabel_email_data.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_email_data.setText("edimez14@gmail.com");
+        getContentPane().add(jLabel_email_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, -1));
+
+        jLabel_nameuser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_nameuser.setText("user name:");
+        getContentPane().add(jLabel_nameuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, -1));
+
+        jLabel_password.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_password.setText("contraseña:");
+        getContentPane().add(jLabel_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
+
+        jLabel_email.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_email.setText("email:");
+        getContentPane().add(jLabel_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, -1, -1));
+
+        jLabel_fullname.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel_fullname.setText("full name:");
+        getContentPane().add(jLabel_fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
 
         jButton_salir.setBackground(new java.awt.Color(0, 0, 0));
         jButton_salir.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -91,7 +108,7 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jButton_MenuActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        getContentPane().add(jButton_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jPanel_Menu.setBackground(new java.awt.Color(1, 72, 127));
         jPanel_Menu.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -99,6 +116,8 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jPanel_MenuComponentHidden(evt);
             }
         });
+        jPanel_Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel_Menu.setVisible(false);
 
         jButton_cerrar_panel.setBackground(new java.awt.Color(0, 0, 0));
         jButton_cerrar_panel.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -109,16 +128,7 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jButton_cerrar_panelActionPerformed(evt);
             }
         });
-
-        jButton_Perfil.setBackground(new java.awt.Color(0, 0, 0));
-        jButton_Perfil.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jButton_Perfil.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_Perfil.setText("Perfil");
-        jButton_Perfil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_PerfilActionPerformed(evt);
-            }
-        });
+        jPanel_Menu.add(jButton_cerrar_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 6, -1, -1));
 
         jButton_Cerrar_sesion.setBackground(new java.awt.Color(0, 0, 0));
         jButton_Cerrar_sesion.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -129,6 +139,18 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jButton_Cerrar_sesionActionPerformed(evt);
             }
         });
+        jPanel_Menu.add(jButton_Cerrar_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
+
+        jButton_Categorias.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_Categorias.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        jButton_Categorias.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Categorias.setText("Categorias");
+        jButton_Categorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_CategoriasActionPerformed(evt);
+            }
+        });
+        jPanel_Menu.add(jButton_Categorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         jButton_Configuracion.setBackground(new java.awt.Color(0, 0, 0));
         jButton_Configuracion.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -139,6 +161,7 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jButton_ConfiguracionActionPerformed(evt);
             }
         });
+        jPanel_Menu.add(jButton_Configuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
 
         jButton_volver.setBackground(new java.awt.Color(0, 0, 0));
         jButton_volver.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -149,47 +172,9 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jButton_volverActionPerformed(evt);
             }
         });
+        jPanel_Menu.add(jButton_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
-        jPanel_Menu.setVisible(false);
-
-        javax.swing.GroupLayout jPanel_MenuLayout = new javax.swing.GroupLayout(jPanel_Menu);
-        jPanel_Menu.setLayout(jPanel_MenuLayout);
-        jPanel_MenuLayout.setHorizontalGroup(
-            jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_cerrar_panel)
-                .addContainerGap())
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_volver)
-                    .addComponent(jButton_Perfil))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_Configuracion)
-                    .addComponent(jButton_Cerrar_sesion))
-                .addGap(0, 42, Short.MAX_VALUE))
-        );
-        jPanel_MenuLayout.setVerticalGroup(
-            jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton_cerrar_panel)
-                .addGap(54, 54, 54)
-                .addComponent(jButton_Perfil)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_volver)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_Configuracion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
-                .addComponent(jButton_Cerrar_sesion)
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPanel_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 550));
+        getContentPane().add(jPanel_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 550));
 
         jLabel_fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
         getContentPane().add(jLabel_fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -197,26 +182,15 @@ public class Mecanicos_view extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salirActionPerformed
-
-        System.exit(0);
-    }//GEN-LAST:event_jButton_salirActionPerformed
-
-    private void jButton_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_volverActionPerformed
-        Categoria verCategoria = new Categoria();
-        verCategoria.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton_volverActionPerformed
+    private void jButton_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MenuActionPerformed
+        jPanel_Menu.setVisible(true);
+        jButton_Menu.setVisible(false);
+    }//GEN-LAST:event_jButton_MenuActionPerformed
 
     private void jButton_cerrar_panelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cerrar_panelActionPerformed
         jPanel_Menu.setVisible(false);
         jButton_Menu.setVisible(true);
     }//GEN-LAST:event_jButton_cerrar_panelActionPerformed
-
-    private void jButton_MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MenuActionPerformed
-        jPanel_Menu.setVisible(true);
-        jButton_Menu.setVisible(false);
-    }//GEN-LAST:event_jButton_MenuActionPerformed
 
     private void jButton_Cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Cerrar_sesionActionPerformed
         JOptionPane.showMessageDialog(this, "Sesion cerrada con exito");
@@ -229,11 +203,22 @@ public class Mecanicos_view extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jPanel_MenuComponentHidden
 
-    private void jButton_PerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_PerfilActionPerformed
-        Perfil verPerfil = new Perfil();
-        verPerfil.setVisible(true);
+    private void jButton_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_salirActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_jButton_salirActionPerformed
+
+    private void jButton_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_volverActionPerformed
+        Categoria verCategoria = new Categoria();
+        verCategoria.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton_PerfilActionPerformed
+    }//GEN-LAST:event_jButton_volverActionPerformed
+
+    private void jButton_CategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CategoriasActionPerformed
+        Categoria verCategoria = new Categoria();
+        verCategoria.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton_CategoriasActionPerformed
 
     private void jButton_ConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ConfiguracionActionPerformed
         Configuracion verConfiguracion = new Configuracion();
@@ -258,37 +243,42 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Mecanicos_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Mecanicos_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Mecanicos_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Mecanicos_view.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mecanicos_view().setVisible(true);
+                new Perfil().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_Categorias;
     private javax.swing.JButton jButton_Cerrar_sesion;
     private javax.swing.JButton jButton_Configuracion;
     private javax.swing.JButton jButton_Menu;
-    private javax.swing.JButton jButton_Perfil;
     private javax.swing.JButton jButton_cerrar_panel;
     private javax.swing.JButton jButton_salir;
     private javax.swing.JButton jButton_volver;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel_email;
+    private javax.swing.JLabel jLabel_email_data;
     private javax.swing.JLabel jLabel_fondo;
+    private javax.swing.JLabel jLabel_foto_perfil;
+    private javax.swing.JLabel jLabel_fullname;
+    private javax.swing.JLabel jLabel_fullname_data;
+    private javax.swing.JLabel jLabel_nameuser;
+    private javax.swing.JLabel jLabel_nameuser_data;
+    private javax.swing.JLabel jLabel_password;
+    private javax.swing.JLabel jLabel_password_data;
     private javax.swing.JPanel jPanel_Menu;
     // End of variables declaration//GEN-END:variables
 }

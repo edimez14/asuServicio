@@ -201,8 +201,8 @@ public class login extends javax.swing.JFrame {
         
         //llamamos al metodo para verificar los datos ingresados
         if (verificacion(email, password)) {
-            Iniciar verIniciar=new Iniciar();
-            verIniciar.setVisible(true);
+            Categoria verCategoria=new Categoria();
+            verCategoria.setVisible(true);
             dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
