@@ -8,10 +8,10 @@ import javax.swing.JOptionPane;
 
 public class Conexion {
     private final String DRIVER="com.mysql.jdbc.Driver";
-    private final String URL="jdbc:mysql://localhost:3306/";
-    private final String DB="user_db";
-    private final String USER="root";
-    private final String PASSWORD="";
+    private final String URL="jdbc:mysql://sql10.freesqldatabase.com:3306/";
+    private final String DB="sql10734745";
+    private final String USER="sql10734745";
+    private final String PASSWORD="psktmJVElC";
     
     public Connection cadena;
     public static Conexion instancia;
