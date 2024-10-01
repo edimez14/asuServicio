@@ -1,3 +1,10 @@
+/**
+ * enter the database: https://phpmyadmin.co/index.php?db=sql10734745&table=user_db&target=sql.php
+ * server: sql10.freesqldatabase.com:3306
+ * user: sql10734745
+ * password: psktmJVElC
+ */
+
 
 package database;
 
