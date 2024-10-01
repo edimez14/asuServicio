@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import database.Conexion;
+import java.sql.SQLException;
 
 /**
  *
@@ -19,8 +20,10 @@ import database.Conexion;
  * @author Andres Elias Roa Puentes
  */
 public class login extends javax.swing.JFrame {
-
-
+    private int id;
+    private Connection con = null;
+    private PreparedStatement ps = null;
+    private ResultSet rs = null;
         
 
     /**
@@ -48,9 +51,7 @@ public class login extends javax.swing.JFrame {
     
     //metodo para verificar las credenciales de inicio de sesion
     private boolean verificacion(String email, String password) {
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
+        
         
         try {
             //nos conectamos a la base de datos
@@ -69,16 +70,14 @@ public class login extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al verificar los datos: " + e.getMessage());
             return false;
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (ps != null) ps.close();
-                if (con != null) con.close();
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Error al cerrar la conexión: " + e.getMessage());
-            }
-        }
-    } 
+        } 
+    }
+    
+    public int getId() throws SQLException {
+        String query = "SELECT * FROM user_db WHERE id_user";
+        id = rs.getInt("id_user");
+        return id;
+    }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -190,22 +189,34 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_iniciar_sesion_buttonActionPerformed
 
     private void iniciar_sesion_buttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iniciar_sesion_buttonMouseClicked
-        String email = jTextField_email.getText();
-        String password = new String(jPasswordField.getPassword());
-        
-        //verificamos si los campos no estan vacios
-        if (email.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, complete los campos vacios");
-            return;
-        }
-        
-        //llamamos al metodo para verificar los datos ingresados
-        if (verificacion(email, password)) {
-            Categoria verCategoria=new Categoria();
-            verCategoria.setVisible(true);
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
+        try{
+            String email = jTextField_email.getText();
+            String password = new String(jPasswordField.getPassword());
+
+            //verificamos si los campos no estan vacios
+            if (email.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, complete los campos vacios");
+                return;
+            }
+
+            //llamamos al metodo para verificar los datos ingresados
+            if (verificacion(email, password)) {
+                Categoria verCategoria=new Categoria();
+                verCategoria.setVisible(true);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
+            }
+//            getId();
+//            System.out.print(id);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Error al cerrar la conexión: " + e.getMessage());
+            }
         }
     }//GEN-LAST:event_iniciar_sesion_buttonMouseClicked
 

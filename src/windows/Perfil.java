@@ -4,6 +4,14 @@
  */
 package windows;
 
+
+import database.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,6 +19,10 @@ import javax.swing.JOptionPane;
  * @author prestamo
  */
 public class Perfil extends javax.swing.JFrame {
+    private Connection con = null;
+    private PreparedStatement ps = null;
+    private ResultSet rs = null;
+    private String userName, password, email, userFullName;
 
     /**
      * Creates new form Perfil
@@ -19,6 +31,51 @@ public class Perfil extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+    
+    
+    public void dataPerfil() throws SQLException {
+        
+        try {
+            // peticion del id
+            login id = new login();
+            int getId = id.getId();
+            
+            //nos conectamos a la base de datos
+            con = Conexion.getInstancia().conectar();
+            
+            
+            //consultamos a la base de datos los datos que queremos verificar
+            String setQuery = "SELECT * FROM user_db WHERE id_user = ?";
+            ps = con.prepareStatement(setQuery);
+            ps.setInt(1, getId);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                userName = rs.getString("user_name");
+                password = rs.getString("user_password");
+                email = rs.getString("user_email");
+                userFullName = rs.getString("user_full_name");
+
+                jLabel_nameuser_data.setText(userName);
+                jLabel_password_data.setText(password);
+                jLabel_email_data.setText(email);
+                jLabel_fullname_data.setText(userFullName);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: No se encontraron datos del perfil.");
+            }
+            
+            //si hay resultados significa que los datos son correctos
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error al obtener los datos del perfil: " + e.getMessage());
+        } finally {
+            // Cerramos los recursos
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        }
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,39 +111,35 @@ public class Perfil extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_foto_perfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/user_logo.png"))); // NOI18N
-        getContentPane().add(jLabel_foto_perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
+        getContentPane().add(jLabel_foto_perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, -1));
 
         jLabel_nameuser_data.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel_nameuser_data.setText("edimez14");
-        getContentPane().add(jLabel_nameuser_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, -1, -1));
+        getContentPane().add(jLabel_nameuser_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
 
         jLabel_password_data.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel_password_data.setText("**************");
-        getContentPane().add(jLabel_password_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, -1));
+        getContentPane().add(jLabel_password_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, -1, -1));
 
         jLabel_fullname_data.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel_fullname_data.setText("edizon alexander meza leal");
-        getContentPane().add(jLabel_fullname_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, -1));
+        getContentPane().add(jLabel_fullname_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, -1, -1));
 
         jLabel_email_data.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel_email_data.setText("edimez14@gmail.com");
-        getContentPane().add(jLabel_email_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, -1));
+        getContentPane().add(jLabel_email_data, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, -1, -1));
 
         jLabel_nameuser.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel_nameuser.setText("user name:");
-        getContentPane().add(jLabel_nameuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, -1, -1));
+        jLabel_nameuser.setText("nombre de usuario:");
+        getContentPane().add(jLabel_nameuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, -1, -1));
 
         jLabel_password.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel_password.setText("contraseña:");
-        getContentPane().add(jLabel_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
+        getContentPane().add(jLabel_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, -1, -1));
 
         jLabel_email.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel_email.setText("email:");
-        getContentPane().add(jLabel_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, -1, -1));
+        getContentPane().add(jLabel_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, -1, -1));
 
         jLabel_fullname.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel_fullname.setText("full name:");
-        getContentPane().add(jLabel_fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, -1));
+        getContentPane().add(jLabel_fullname, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
 
         jButton_salir.setBackground(new java.awt.Color(0, 0, 0));
         jButton_salir.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -256,7 +309,14 @@ public class Perfil extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Perfil().setVisible(true);
+                Perfil perfil = new Perfil();
+                perfil.setVisible(true);
+                try {
+                    perfil.dataPerfil(); // Mueve esta llamada dentro de try-catch.
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(perfil, "Error al cargar datos: " + e.getMessage());
+                    System.out.print("Error al cargar datos: " + e.getMessage());
+                }
             }
         });
     }
