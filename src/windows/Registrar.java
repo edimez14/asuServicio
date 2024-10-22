@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package windows;
 
 import database.Conexion;
@@ -133,7 +129,7 @@ public class Registrar extends javax.swing.JFrame {
         jLabel_user.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_user.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_user.setText("Usuario");
-        getContentPane().add(jLabel_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
+        getContentPane().add(jLabel_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, -1, -1));
 
         jTextField_user.setBackground(new java.awt.Color(190, 221, 255));
         jTextField_user.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -143,7 +139,7 @@ public class Registrar extends javax.swing.JFrame {
                 jTextField_userActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 170, 20));
+        getContentPane().add(jTextField_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 170, 20));
 
         jLabel_password.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_password.setForeground(new java.awt.Color(255, 255, 255));
@@ -153,7 +149,7 @@ public class Registrar extends javax.swing.JFrame {
         jPasswordField.setBackground(new java.awt.Color(190, 221, 255));
         jPasswordField.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jPasswordField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        getContentPane().add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 170, 20));
+        getContentPane().add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 400, 170, 20));
 
         jButton_volver.setBackground(new java.awt.Color(0, 0, 0));
         jButton_volver.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -169,12 +165,12 @@ public class Registrar extends javax.swing.JFrame {
         jLabel_password1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_password1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_password1.setText("Contraseña");
-        getContentPane().add(jLabel_password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, -1, -1));
+        getContentPane().add(jLabel_password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, -1, -1));
 
         jPasswordField1.setBackground(new java.awt.Color(190, 221, 255));
         jPasswordField1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 170, 20));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 170, 20));
 
         jLabel_user_email.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_user_email.setForeground(new java.awt.Color(255, 255, 255));

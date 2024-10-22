@@ -210,7 +210,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_iniciar_sesion_buttonMouseClicked
 
     private void registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerActionPerformed
-        Registrar verRegistrar=new Registrar();
+        register_como verRegistrar=new register_como();
         verRegistrar.setVisible(true);
         dispose();
     }//GEN-LAST:event_registerActionPerformed

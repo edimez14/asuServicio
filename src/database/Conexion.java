@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Conexion {
-    private final String DRIVER="com.mysql.jdbc.Driver";
-    private final String URL="bqkvr2puqldwqoel39uj-mysql.services.clever-cloud.com:3306";
+    private final String DRIVER="com.mysql.cj.jdbc.Driver";
+    private final String URL="jdbc:mysql://bqkvr2puqldwqoel39uj-mysql.services.clever-cloud.com:3306/";
     private final String DB="bqkvr2puqldwqoel39uj";
     private final String USER="ua1ug1iu9ymrlzqx";
     private final String PASSWORD="20KHM6qE5VgoeC8QPCCI";
