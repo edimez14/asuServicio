@@ -44,13 +44,14 @@ public class Mecanicos_view extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton_salir = new javax.swing.JButton();
-        jButton_Menu = new javax.swing.JButton();
+        jButton_Menu1 = new javax.swing.JButton();
         jPanel_Menu = new javax.swing.JPanel();
         jButton_cerrar_panel = new javax.swing.JButton();
         jButton_Perfil = new javax.swing.JButton();
         jButton_Cerrar_sesion = new javax.swing.JButton();
         jButton_Configuracion = new javax.swing.JButton();
         jButton_volver = new javax.swing.JButton();
+        jButton_Menu = new javax.swing.JButton();
         jLabel_fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,18 +81,18 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jButton_salirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
+        getContentPane().add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, -1, -1));
 
-        jButton_Menu.setBackground(new java.awt.Color(0, 0, 0));
-        jButton_Menu.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
-        jButton_Menu.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_Menu.setText("Menu");
-        jButton_Menu.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Menu1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_Menu1.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        jButton_Menu1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Menu1.setText("Menu");
+        jButton_Menu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_MenuActionPerformed(evt);
+                jButton_Menu1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        getContentPane().add(jButton_Menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jPanel_Menu.setBackground(new java.awt.Color(1, 72, 127));
         jPanel_Menu.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -99,6 +100,8 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jPanel_MenuComponentHidden(evt);
             }
         });
+        jPanel_Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel_Menu.setVisible(false);
 
         jButton_cerrar_panel.setBackground(new java.awt.Color(0, 0, 0));
         jButton_cerrar_panel.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -109,6 +112,7 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jButton_cerrar_panelActionPerformed(evt);
             }
         });
+        jPanel_Menu.add(jButton_cerrar_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 6, -1, -1));
 
         jButton_Perfil.setBackground(new java.awt.Color(0, 0, 0));
         jButton_Perfil.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -119,6 +123,7 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jButton_PerfilActionPerformed(evt);
             }
         });
+        jPanel_Menu.add(jButton_Perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
 
         jButton_Cerrar_sesion.setBackground(new java.awt.Color(0, 0, 0));
         jButton_Cerrar_sesion.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -129,6 +134,7 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jButton_Cerrar_sesionActionPerformed(evt);
             }
         });
+        jPanel_Menu.add(jButton_Cerrar_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 513, -1, -1));
 
         jButton_Configuracion.setBackground(new java.awt.Color(0, 0, 0));
         jButton_Configuracion.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -139,6 +145,7 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jButton_ConfiguracionActionPerformed(evt);
             }
         });
+        jPanel_Menu.add(jButton_Configuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         jButton_volver.setBackground(new java.awt.Color(0, 0, 0));
         jButton_volver.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -149,45 +156,18 @@ public class Mecanicos_view extends javax.swing.JFrame {
                 jButton_volverActionPerformed(evt);
             }
         });
+        jPanel_Menu.add(jButton_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
 
-        jPanel_Menu.setVisible(false);
-
-        javax.swing.GroupLayout jPanel_MenuLayout = new javax.swing.GroupLayout(jPanel_Menu);
-        jPanel_Menu.setLayout(jPanel_MenuLayout);
-        jPanel_MenuLayout.setHorizontalGroup(
-            jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton_cerrar_panel)
-                .addContainerGap())
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_volver)
-                    .addComponent(jButton_Perfil))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_Configuracion)
-                    .addComponent(jButton_Cerrar_sesion))
-                .addGap(0, 42, Short.MAX_VALUE))
-        );
-        jPanel_MenuLayout.setVerticalGroup(
-            jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton_cerrar_panel)
-                .addGap(54, 54, 54)
-                .addComponent(jButton_Perfil)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_volver)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_Configuracion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 299, Short.MAX_VALUE)
-                .addComponent(jButton_Cerrar_sesion)
-                .addContainerGap())
-        );
+        jButton_Menu.setBackground(new java.awt.Color(0, 0, 0));
+        jButton_Menu.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        jButton_Menu.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Menu.setText("Menu");
+        jButton_Menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_MenuActionPerformed(evt);
+            }
+        });
+        jPanel_Menu.add(jButton_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         getContentPane().add(jPanel_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 550));
 
@@ -220,8 +200,8 @@ public class Mecanicos_view extends javax.swing.JFrame {
 
     private void jButton_Cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Cerrar_sesionActionPerformed
         JOptionPane.showMessageDialog(this, "Sesion cerrada con exito");
-        login verlogin = new login();
-        verlogin.setVisible(true);
+        login_como verlogin_como = new login_como();
+        verlogin_como.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton_Cerrar_sesionActionPerformed
 
@@ -240,6 +220,11 @@ public class Mecanicos_view extends javax.swing.JFrame {
         verConfiguracion.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton_ConfiguracionActionPerformed
+
+    private void jButton_Menu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Menu1ActionPerformed
+       jPanel_Menu.setVisible(true);
+        jButton_Menu.setVisible(false); // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_Menu1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,6 +265,7 @@ public class Mecanicos_view extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Cerrar_sesion;
     private javax.swing.JButton jButton_Configuracion;
     private javax.swing.JButton jButton_Menu;
+    private javax.swing.JButton jButton_Menu1;
     private javax.swing.JButton jButton_Perfil;
     private javax.swing.JButton jButton_cerrar_panel;
     private javax.swing.JButton jButton_salir;

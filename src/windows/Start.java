@@ -39,10 +39,9 @@ public class Start extends javax.swing.JFrame implements Runnable {
     private void initComponents() {
 
         jButton_salir = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel_carousel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
@@ -59,21 +58,20 @@ public class Start extends javax.swing.JFrame implements Runnable {
             }
         });
         getContentPane().add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Iniciar sesió (1).png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, 80));
         getContentPane().add(jLabel_carousel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 420, 300));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jButton1.setText("jButton1");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/iniciar sesion apagado.png"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Iniciar sesión_1.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 240, 70));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 410, 240, 70));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -83,8 +81,8 @@ public class Start extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_jButton_salirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        login verlogin=new login();
-        verlogin.setVisible(true);
+        login_como verlogin_como=new login_como();
+        verlogin_como.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -143,7 +141,6 @@ public class Start extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_salir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_carousel;
     // End of variables declaration//GEN-END:variables
 }

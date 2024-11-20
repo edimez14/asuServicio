@@ -222,8 +222,8 @@ public class Iniciar extends javax.swing.JFrame {
 
     private void jButton_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cerrar_sesionActionPerformed
         JOptionPane.showMessageDialog(this, "Sesion cerrada con exito");
-        login verlogin = new login();
-        verlogin.setVisible(true);
+        login_como verlogin_como = new login_como();
+        verlogin_como.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton_cerrar_sesionActionPerformed
 

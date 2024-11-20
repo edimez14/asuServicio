@@ -40,9 +40,9 @@ public class Categoria extends javax.swing.JFrame {
         jPanel_Menu = new javax.swing.JPanel();
         jButton_cerrar = new javax.swing.JButton();
         jButton_perfil = new javax.swing.JButton();
-        jButton_categorias = new javax.swing.JButton();
         jButton_configuracion = new javax.swing.JButton();
         jButton_cerrar_sesion = new javax.swing.JButton();
+        Button_Menu1 = new javax.swing.JButton();
         jButton_salir = new javax.swing.JButton();
         jButton_mecanico = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
@@ -62,9 +62,11 @@ public class Categoria extends javax.swing.JFrame {
                 Button_MenuActionPerformed(evt);
             }
         });
-        getContentPane().add(Button_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        getContentPane().add(Button_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jPanel_Menu.setBackground(new java.awt.Color(1, 72, 127));
+        jPanel_Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel_Menu.setVisible(false);
 
         jButton_cerrar.setBackground(new java.awt.Color(0, 0, 0));
         jButton_cerrar.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -75,6 +77,7 @@ public class Categoria extends javax.swing.JFrame {
                 jButton_cerrarActionPerformed(evt);
             }
         });
+        jPanel_Menu.add(jButton_cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 6, -1, -1));
 
         jButton_perfil.setBackground(new java.awt.Color(0, 0, 0));
         jButton_perfil.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -85,16 +88,7 @@ public class Categoria extends javax.swing.JFrame {
                 jButton_perfilActionPerformed(evt);
             }
         });
-
-        jButton_categorias.setBackground(new java.awt.Color(0, 0, 0));
-        jButton_categorias.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jButton_categorias.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_categorias.setText("Categorias");
-        jButton_categorias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_categoriasActionPerformed(evt);
-            }
-        });
+        jPanel_Menu.add(jButton_perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 85, -1, -1));
 
         jButton_configuracion.setBackground(new java.awt.Color(0, 0, 0));
         jButton_configuracion.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -105,6 +99,7 @@ public class Categoria extends javax.swing.JFrame {
                 jButton_configuracionActionPerformed(evt);
             }
         });
+        jPanel_Menu.add(jButton_configuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jButton_cerrar_sesion.setBackground(new java.awt.Color(0, 0, 0));
         jButton_cerrar_sesion.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
@@ -115,50 +110,18 @@ public class Categoria extends javax.swing.JFrame {
                 jButton_cerrar_sesionActionPerformed(evt);
             }
         });
+        jPanel_Menu.add(jButton_cerrar_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 513, -1, -1));
 
-        jPanel_Menu.setVisible(false);
-
-        javax.swing.GroupLayout jPanel_MenuLayout = new javax.swing.GroupLayout(jPanel_Menu);
-        jPanel_Menu.setLayout(jPanel_MenuLayout);
-        jPanel_MenuLayout.setHorizontalGroup(
-            jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_MenuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton_cerrar))
-                    .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                        .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addComponent(jButton_perfil))
-                            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jButton_categorias)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_cerrar_sesion)
-                    .addComponent(jButton_configuracion))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        jPanel_MenuLayout.setVerticalGroup(
-            jPanel_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_MenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton_cerrar)
-                .addGap(54, 54, 54)
-                .addComponent(jButton_perfil)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_categorias)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_configuracion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
-                .addComponent(jButton_cerrar_sesion)
-                .addContainerGap())
-        );
+        Button_Menu1.setBackground(new java.awt.Color(0, 0, 0));
+        Button_Menu1.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
+        Button_Menu1.setForeground(new java.awt.Color(255, 255, 255));
+        Button_Menu1.setText("Menu");
+        Button_Menu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Button_Menu1ActionPerformed(evt);
+            }
+        });
+        jPanel_Menu.add(Button_Menu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         getContentPane().add(jPanel_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 550));
 
@@ -214,12 +177,6 @@ public class Categoria extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton_perfilActionPerformed
 
-    private void jButton_categoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_categoriasActionPerformed
-        Categoria verCategoria = new Categoria();
-        verCategoria.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton_categoriasActionPerformed
-
     private void jButton_configuracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_configuracionActionPerformed
         Configuracion verConfiguracion = new Configuracion();
         verConfiguracion.setVisible(true);
@@ -228,10 +185,14 @@ public class Categoria extends javax.swing.JFrame {
 
     private void jButton_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_cerrar_sesionActionPerformed
         JOptionPane.showMessageDialog(this, "Sesion cerrada con exito");
-        login verlogin = new login();
-        verlogin.setVisible(true);
+        login_como verlogin_como = new login_como();
+        verlogin_como.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton_cerrar_sesionActionPerformed
+
+    private void Button_Menu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_Menu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Button_Menu1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,8 +231,8 @@ public class Categoria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Button_Menu;
+    private javax.swing.JButton Button_Menu1;
     private javax.swing.JLabel Fondo;
-    private javax.swing.JButton jButton_categorias;
     private javax.swing.JButton jButton_cerrar;
     private javax.swing.JButton jButton_cerrar_sesion;
     private javax.swing.JButton jButton_configuracion;

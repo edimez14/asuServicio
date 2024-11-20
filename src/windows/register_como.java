@@ -23,64 +23,178 @@ public class register_como extends javax.swing.JFrame {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("assets/logo_asuServicio(1).png"));
         return retValue;
     }
+
     //metodo para insertar los datos de los usuarios que se registren 
     private void registrarUsuario() {
-        //obtenemos los valores de los campos de texto
+        // Obtener los valores de los campos de usuario
         String nombre = jLabel_user3.getText();
         String email = jTextField_user1.getText();
         String pNumber = jTextField_user_pNumber.getText();
         String username = jTextField_user.getText();
         String password = new String(jPasswordField1.getPassword());
         String confirmPassword = new String(jPasswordField.getPassword());
-        
-        //verificar si las contraseñas coinciden
+
+        // Verificar que las contraseñas del usuario coincidan
         if (!password.equals(confirmPassword)) {
-            JOptionPane.showMessageDialog(this, "Las contraseñas no coninciden");
+            JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden");
             return;
         }
-        
-        //verificamos que no haya campos vacios
-        if (nombre.isEmpty() || email.isEmpty() || pNumber.isEmpty() || username.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos");
+
+        // Verificar que los campos del usuario no estén vacíos
+        if (nombre.isEmpty() || email.isEmpty() || pNumber.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos del usuario");
             return;
         }
-        
-        //nos conectamos a la base de datos
+
+        if (jComboBox2.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar una opción en los términos y condiciones.");
+            return;  // Si no se ha seleccionado nada, detenemos el registro
+        }
+
+        String seleccionTerminos = jComboBox2.getSelectedItem().toString();
+
+        if (!seleccionTerminos.equals("Estoy de Acuerdo")) {
+            JOptionPane.showMessageDialog(this, "Debes aceptar los términos y condiciones.");
+            return;  // Si no está seleccionado "Sí", no continuamos con el registro
+        }
+
+        // Conectarse a la base de datos
         Conexion conexion = Conexion.getInstancia();
         Connection conr = conexion.conectar();
-        
-        //preparamos la sentencia para insertar datos en la base de datos
+
+        // Preparar la sentencia para insertar los datos del usuario
         String sql = "INSERT INTO user_db (user_full_name, user_email, user_pNumber, user_name, user_password) VALUES (?, ?, ?, ?, ?)";
-    
+
         try (PreparedStatement psr = conr.prepareStatement(sql)) {
-            // Establecemos los parámetros en la consulta
+            // Establecer los parámetros en la consulta
             psr.setString(1, nombre);
             psr.setString(2, email);
             psr.setString(3, pNumber);
             psr.setString(4, username);
             psr.setString(5, password);
-            
-            //ejecutamos la consulta
+
+            // Ejecutar la consulta
             int rowsAffected = psr.executeUpdate();
-            
-            //condiciones para verificar si se logro registrar el nuevo usuario
+
+            // Verificar si se logró registrar el nuevo usuario
             if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(this, "Nuevo usuario, registrado con exito");
-                login verlogin = new login();
-                verlogin.setVisible(true);
-                dispose();
+                JOptionPane.showMessageDialog(this, "Nuevo usuario registrado con éxito");
+                new login_como().setVisible(true);  // Abre la ventana de logearse
+                this.dispose();  // Cierra la ventana actual
             } else {
                 JOptionPane.showMessageDialog(this, "Error al registrar el nuevo usuario");
             }
-            
+
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error de la base de datos: " + e.getMessage());
         } finally {
-            //desconectar de la base de datos
             conexion.desconectar();
         }
     }
-   
+
+    private void registrarServicio() {
+        // Obtener los valores de los campos del servicio
+        String nombre2 = jTextField_user4.getText();  // Nombre del servicio
+        String direccion = jTextField_user5.getText();  // Dirección del servicio
+        String servemail = jTextField_user_email.getText();  // Email del servicio
+        String servpassword = new String(jPasswordField3.getPassword());  // Contraseña del servicio
+        String servconfirmPassword = new String(jPasswordField2.getPassword());  // Confirmación de contraseña
+        String cell_serv = jTextField_user_pNumber1.getText();  // Celular del servicio (campo actualizado)
+
+        // Obtener los valores seleccionados en los ComboBox
+        String servicioSeleccionado = jComboBox1.getSelectedItem() != null ? jComboBox1.getSelectedItem().toString() : "";
+        String medioPagoSeleccionado = jComboBox3.getSelectedItem() != null ? jComboBox3.getSelectedItem().toString() : "";
+
+        // Verificar que las contraseñas del servicio coincidan
+        if (!servpassword.equals(servconfirmPassword)) {
+            JOptionPane.showMessageDialog(this, "Las contraseñas del servicio no coinciden");
+            return;
+        }
+
+        // Verificar que los campos del servicio no estén vacíos
+        if (nombre2.isEmpty() || direccion.isEmpty() || servemail.isEmpty() || servpassword.isEmpty() || servconfirmPassword.isEmpty() || cell_serv.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos del servicio");
+            return;
+        }
+
+        // Verificar que el servicio seleccionado sea válido
+        if (servicioSeleccionado.isEmpty() || !(servicioSeleccionado.equals("Mecánico") || servicioSeleccionado.equals("Ambulancia") || servicioSeleccionado.equals("Bicicletería"))) {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio válido (Mecánico, Ambulancia, o Bicicletería).");
+            return;
+        }
+
+        // Verificar que se haya seleccionado un medio de pago
+        if (medioPagoSeleccionado.isEmpty() || !(medioPagoSeleccionado.equals("Tarjeta de Crédito y Débito") || medioPagoSeleccionado.equals("Transferencias Bancarias") || medioPagoSeleccionado.equals("Billeteras Electrónicas"))) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un medio de pago.");
+            return;
+        }
+
+        if (jComboBox4.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar una opción en los términos y condiciones.");
+            return;  // Si no se ha seleccionado nada, detenemos el registro
+        }
+
+        String seleccionTerminos = jComboBox4.getSelectedItem().toString();
+
+        if (!seleccionTerminos.equals("Estoy de Acuerdo")) {
+            JOptionPane.showMessageDialog(this, "Debes aceptar los términos y condiciones.");
+            return;  // Si no está seleccionado "Sí", no continuamos con el registro
+        }
+
+        // Conectarse a la base de datos
+        Conexion conexion = Conexion.getInstancia();
+        Connection conr = conexion.conectar();
+
+        // Definir la consulta SQL dependiendo del servicio seleccionado
+        String sql = "";
+
+        // Determinar en qué tabla insertar según el servicio seleccionado
+        switch (servicioSeleccionado) {
+            case "Mecánico":
+                sql = "INSERT INTO mechanics_serv (full_name, service_email, serv_password, adress_serv, pay_way, cell_serv) VALUES (?, ?, ?, ?, ?, ?)";
+                break;
+            case "Ambulancia":
+                sql = "INSERT INTO ambulance_serv (full_name, service_email, serv_password, adress_serv, pay_way, cell_serv) VALUES (?, ?, ?, ?, ?, ?)";
+                break;
+            case "Bicicletería":
+                sql = "INSERT INTO bike_serv (full_name, service_email, serv_password, adress_serv, pay_way, cell_serv) VALUES (?, ?, ?, ?, ?, ?)";
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, "Servicio no reconocido");
+                return;
+        }
+
+        try (PreparedStatement psr = conr.prepareStatement(sql)) {
+            // Establecer los parámetros en la consulta
+            psr.setString(1, nombre2);  // full_name
+            psr.setString(2, servemail);  // Email del servicio
+            psr.setString(3, servpassword);  // Contraseña del servicio
+            psr.setString(4, direccion);  // Dirección del servicio
+            psr.setString(5, medioPagoSeleccionado);  // Medio de pago
+            psr.setString(6, cell_serv);  // Celular del servicio
+
+            // Ejecutar la consulta
+            int rowsAffected = psr.executeUpdate();
+
+            // Verificar si se logró registrar el servicio
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(this, "Nuevo servicio registrado con éxito");
+                new login_como().setVisible(true);  // Abre la ventana de logearse
+                this.dispose();  // Cierra la ventana actual
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al registrar el nuevo servicio");
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error de la base de datos: " + e.getMessage());
+        } finally {
+            conexion.desconectar();
+        }
+    }
+
+    
+
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -103,16 +217,14 @@ public class register_como extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Volverbutton = new javax.swing.JButton();
         jButton_salir = new javax.swing.JButton();
-        jLabel_registrarse = new javax.swing.JLabel();
-        Label_Fondo2 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jButton_registrar = new javax.swing.JButton();
+        Label_Fondo2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel_user4 = new javax.swing.JLabel();
         jTextField_user4 = new javax.swing.JTextField();
-        jLabel_user5 = new javax.swing.JLabel();
-        jTextField_user2 = new javax.swing.JTextField();
         jLabel_user6 = new javax.swing.JLabel();
         jTextField_user5 = new javax.swing.JTextField();
         jLabel_user7 = new javax.swing.JLabel();
@@ -121,18 +233,20 @@ public class register_como extends javax.swing.JFrame {
         jPasswordField3 = new javax.swing.JPasswordField();
         jButton_salir2 = new javax.swing.JButton();
         Volverbutton2 = new javax.swing.JButton();
-        jLabel_registrarse1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel_user_email = new javax.swing.JLabel();
         jTextField_user_email = new javax.swing.JTextField();
         jLabel_password2 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
-        Label_Fondo3 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jComboBox4 = new javax.swing.JComboBox<>();
         jButton_registrar1 = new javax.swing.JButton();
+        Label_Fondo3 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -141,7 +255,7 @@ public class register_como extends javax.swing.JFrame {
         jLabel_user3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_user3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_user3.setText("Nombre completo");
-        jPanel2.add(jLabel_user3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
+        jPanel2.add(jLabel_user3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, -1, -1));
 
         jTextField_user3.setBackground(new java.awt.Color(190, 221, 255));
         jTextField_user3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -151,12 +265,12 @@ public class register_como extends javax.swing.JFrame {
                 jTextField_user3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField_user3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 140, 20));
+        jPanel2.add(jTextField_user3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 140, 20));
 
         jLabel_user.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_user.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_user.setText("Usuario");
-        jPanel2.add(jLabel_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, -1));
+        jPanel2.add(jLabel_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
 
         jTextField_user.setBackground(new java.awt.Color(190, 221, 255));
         jTextField_user.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -166,22 +280,27 @@ public class register_como extends javax.swing.JFrame {
                 jTextField_userActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 140, 20));
+        jPanel2.add(jTextField_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 140, 20));
 
         jLabel_password1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_password1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_password1.setText("Contraseña");
-        jPanel2.add(jLabel_password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        jPanel2.add(jLabel_password1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, -1, -1));
 
         jPasswordField1.setBackground(new java.awt.Color(190, 221, 255));
         jPasswordField1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 140, 20));
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 140, 20));
 
         jLabel_user1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_user1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_user1.setText("Correo electronico");
-        jPanel2.add(jLabel_user1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
+        jPanel2.add(jLabel_user1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
 
         jTextField_user1.setBackground(new java.awt.Color(190, 221, 255));
         jTextField_user1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -191,12 +310,12 @@ public class register_como extends javax.swing.JFrame {
                 jTextField_user1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField_user1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 140, 20));
+        jPanel2.add(jTextField_user1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 140, 20));
 
         jLabel_user2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_user2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_user2.setText("Numero de celular");
-        jPanel2.add(jLabel_user2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
+        jPanel2.add(jLabel_user2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, -1, -1));
 
         jTextField_user_pNumber.setBackground(new java.awt.Color(190, 221, 255));
         jTextField_user_pNumber.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -206,20 +325,20 @@ public class register_como extends javax.swing.JFrame {
                 jTextField_user_pNumberActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField_user_pNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, 140, 20));
+        jPanel2.add(jTextField_user_pNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 140, 20));
 
         jLabel_password.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_password.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_password.setText("Repita contraseña");
-        jPanel2.add(jLabel_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
+        jPanel2.add(jLabel_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, -1));
 
         jPasswordField.setBackground(new java.awt.Color(190, 221, 255));
         jPasswordField.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jPasswordField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        jPanel2.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 140, 20));
+        jPanel2.add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, 140, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/user_logo.png"))); // NOI18N
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/logo_asuServicio(1).png"))); // NOI18N
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -246,19 +365,27 @@ public class register_como extends javax.swing.JFrame {
         });
         jPanel2.add(jButton_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, -1));
 
-        jLabel_registrarse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/register (1).png"))); // NOI18N
-        jPanel2.add(jLabel_registrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, -1, -1));
+        jComboBox2.setBackground(new java.awt.Color(190, 221, 255));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Términos Y Condiciones", "Estoy de Acuerdo", "No Estoy De Acuerdo" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, -1));
 
-        Label_Fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
-        jPanel2.add(Label_Fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jButton_registrar.setText("jButton1");
+        jButton_registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/register (1).png"))); // NOI18N
+        jButton_registrar.setContentAreaFilled(false);
+        jButton_registrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/register 200.png"))); // NOI18N
         jButton_registrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_registrarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 130, 30));
+        jPanel2.add(jButton_registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 430, 180, 50));
+
+        Label_Fondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
+        jPanel2.add(Label_Fondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 1, -1, 550));
 
         jTabbedPane1.addTab("Usuario", jPanel2);
 
@@ -273,7 +400,7 @@ public class register_como extends javax.swing.JFrame {
         jLabel_user4.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_user4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_user4.setText("Nombre completo");
-        jPanel1.add(jLabel_user4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+        jPanel1.add(jLabel_user4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
 
         jTextField_user4.setBackground(new java.awt.Color(190, 221, 255));
         jTextField_user4.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -283,27 +410,12 @@ public class register_como extends javax.swing.JFrame {
                 jTextField_user4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField_user4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 140, 20));
-
-        jLabel_user5.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel_user5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_user5.setText("Nombre del servicío");
-        jPanel1.add(jLabel_user5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, -1, -1));
-
-        jTextField_user2.setBackground(new java.awt.Color(190, 221, 255));
-        jTextField_user2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        jTextField_user2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        jTextField_user2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_user2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField_user2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 140, 20));
+        jPanel1.add(jTextField_user4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 140, 20));
 
         jLabel_user6.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_user6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_user6.setText("Dirección");
-        jPanel1.add(jLabel_user6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, -1, -1));
+        jPanel1.add(jLabel_user6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, -1, -1));
 
         jTextField_user5.setBackground(new java.awt.Color(190, 221, 255));
         jTextField_user5.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -313,12 +425,12 @@ public class register_como extends javax.swing.JFrame {
                 jTextField_user5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField_user5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 140, 20));
+        jPanel1.add(jTextField_user5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 140, 20));
 
         jLabel_user7.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_user7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_user7.setText("Numero de celular");
-        jPanel1.add(jLabel_user7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
+        jPanel1.add(jLabel_user7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
         jTextField_user_pNumber1.setBackground(new java.awt.Color(190, 221, 255));
         jTextField_user_pNumber1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -328,17 +440,22 @@ public class register_como extends javax.swing.JFrame {
                 jTextField_user_pNumber1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField_user_pNumber1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, 140, -1));
+        jPanel1.add(jTextField_user_pNumber1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 140, -1));
 
         jLabel_password3.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_password3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_password3.setText("Contraseña");
-        jPanel1.add(jLabel_password3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, -1, -1));
+        jPanel1.add(jLabel_password3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, -1, -1));
 
         jPasswordField3.setBackground(new java.awt.Color(190, 221, 255));
         jPasswordField3.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jPasswordField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        jPanel1.add(jPasswordField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 140, 20));
+        jPasswordField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jPasswordField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 140, 20));
 
         jButton_salir2.setBackground(new java.awt.Color(0, 0, 0));
         jButton_salir2.setFont(new java.awt.Font("sansserif", 1, 13)); // NOI18N
@@ -362,23 +479,20 @@ public class register_como extends javax.swing.JFrame {
         });
         jPanel1.add(Volverbutton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, -1, -1));
 
-        jLabel_registrarse1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/register (1).png"))); // NOI18N
-        jPanel1.add(jLabel_registrarse1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, -1, -1));
-
         jComboBox1.setBackground(new java.awt.Color(190, 221, 255));
         jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Método de pago", "Tarjeta de Crédito y Débito", "Transferencias Bancarias", "Billeteras Electrónicas" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo de servicio", "Mecánico", "Bicicletería", "Ambulancia" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, -1, -1));
 
         jLabel_user_email.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_user_email.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_user_email.setText("Correo electronico");
-        jPanel1.add(jLabel_user_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, -1, -1));
+        jPanel1.add(jLabel_user_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
 
         jTextField_user_email.setBackground(new java.awt.Color(190, 221, 255));
         jTextField_user_email.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -388,28 +502,55 @@ public class register_como extends javax.swing.JFrame {
                 jTextField_user_emailActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField_user_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 180, 20));
+        jPanel1.add(jTextField_user_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 180, 20));
 
         jLabel_password2.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
         jLabel_password2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_password2.setText("Repita contraseña");
-        jPanel1.add(jLabel_password2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 350, -1, -1));
+        jPanel1.add(jLabel_password2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, -1, -1));
 
         jPasswordField2.setBackground(new java.awt.Color(190, 221, 255));
         jPasswordField2.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         jPasswordField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102), 2));
-        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, 170, 20));
+        jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 170, 20));
 
-        Label_Fondo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
-        jPanel1.add(Label_Fondo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jComboBox3.setBackground(new java.awt.Color(190, 221, 255));
+        jComboBox3.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Método de pago", "Tarjeta de Crédito y Débito", "Transferencias Bancarias", "Billeteras Electrónicas" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, -1, -1));
 
-        jButton_registrar1.setText("jButton1");
+        jComboBox4.setBackground(new java.awt.Color(190, 221, 255));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Términos Y Condiciones", "Estoy de Acuerdo", "No Estoy De Acuerdo" }));
+        jComboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, -1, -1));
+
+        jButton_registrar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/register (1).png"))); // NOI18N
+        jButton_registrar1.setContentAreaFilled(false);
+        jButton_registrar1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/register 200.png"))); // NOI18N
         jButton_registrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_registrar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton_registrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 130, 30));
+        jPanel1.add(jButton_registrar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, 170, 50));
+
+        Label_Fondo3.setForeground(new java.awt.Color(255, 255, 255));
+        Label_Fondo3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/imagen_fondo_5.jpeg"))); // NOI18N
+        jPanel1.add(Label_Fondo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jTabbedPane1.addTab("Servicio", jPanel1);
 
@@ -448,8 +589,8 @@ public class register_como extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_user_pNumberActionPerformed
 
     private void VolverbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverbuttonActionPerformed
-        login verlogin=new login();
-        verlogin.setVisible(true);
+        login_como verlogin_como = new login_como();
+        verlogin_como.setVisible(true);
         dispose();
     }//GEN-LAST:event_VolverbuttonActionPerformed
 
@@ -460,10 +601,6 @@ public class register_como extends javax.swing.JFrame {
     private void jTextField_user4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_user4ActionPerformed
-
-    private void jTextField_user2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_user2ActionPerformed
 
     private void jTextField_user5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user5ActionPerformed
         // TODO add your handling code here:
@@ -478,14 +615,10 @@ public class register_como extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_salir2ActionPerformed
 
     private void Volverbutton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Volverbutton2ActionPerformed
-        login verlogin=new login();
-        verlogin.setVisible(true);
+        login_como verlogin_como = new login_como();
+        verlogin_como.setVisible(true);
         dispose();
     }//GEN-LAST:event_Volverbutton2ActionPerformed
-
-    private void jButton_registrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_registrar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_registrar1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
 
@@ -494,6 +627,34 @@ public class register_como extends javax.swing.JFrame {
     private void jTextField_user_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_user_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_user_emailActionPerformed
+
+    private void jButton_registrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_registrar1ActionPerformed
+        registrarServicio();//llamar registrar servicios
+    }//GEN-LAST:event_jButton_registrar1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jPasswordField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField3ActionPerformed
+
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
+
+    private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -542,6 +703,9 @@ public class register_como extends javax.swing.JFrame {
     private javax.swing.JButton jButton_salir;
     private javax.swing.JButton jButton_salir2;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -550,14 +714,11 @@ public class register_como extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_password1;
     private javax.swing.JLabel jLabel_password2;
     private javax.swing.JLabel jLabel_password3;
-    private javax.swing.JLabel jLabel_registrarse;
-    private javax.swing.JLabel jLabel_registrarse1;
     private javax.swing.JLabel jLabel_user;
     private javax.swing.JLabel jLabel_user1;
     private javax.swing.JLabel jLabel_user2;
     private javax.swing.JLabel jLabel_user3;
     private javax.swing.JLabel jLabel_user4;
-    private javax.swing.JLabel jLabel_user5;
     private javax.swing.JLabel jLabel_user6;
     private javax.swing.JLabel jLabel_user7;
     private javax.swing.JLabel jLabel_user_email;
@@ -570,7 +731,6 @@ public class register_como extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField_user;
     private javax.swing.JTextField jTextField_user1;
-    private javax.swing.JTextField jTextField_user2;
     private javax.swing.JTextField jTextField_user3;
     private javax.swing.JTextField jTextField_user4;
     private javax.swing.JTextField jTextField_user5;
