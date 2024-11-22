@@ -322,7 +322,7 @@ public class login_como extends javax.swing.JFrame {
         }
     }
 
-    private boolean verificacionServicio(String email, String password) {
+    private String verificacionServicio(String email, String password) {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -332,11 +332,12 @@ public class login_como extends javax.swing.JFrame {
             con = Conexion.getInstancia().conectar();
 
             // Consultamos a la base de datos los datos que queremos verificar
-            String query = "SELECT * FROM ambulance_serv WHERE service_email = ? AND serv_password = ? "
+            String query = "SELECT 'ambulance_serv' AS servicio FROM ambulance_serv WHERE service_email = ? AND serv_password = ? "
                     + "UNION "
-                    + "SELECT * FROM bike_serv WHERE service_email = ? AND serv_password = ? "
+                    + "SELECT 'bike_serv' AS servicio FROM bike_serv WHERE service_email = ? AND serv_password = ? "
                     + "UNION "
-                    + "SELECT * FROM mechanics_serv WHERE service_email = ? AND serv_password = ?";
+                    + "SELECT 'mechanics_serv' AS servicio FROM mechanics_serv WHERE service_email = ? AND serv_password = ?";
+
             ps = con.prepareStatement(query);
             ps.setString(1, email);
             ps.setString(2, password);
@@ -347,11 +348,15 @@ public class login_como extends javax.swing.JFrame {
 
             rs = ps.executeQuery();
 
-            // Si hay resultados significa que los datos son correctos
-            return rs.next();
+            // Si hay resultados, significa que los datos son correctos y podemos obtener el servicio
+            if (rs.next()) {
+                return rs.getString("servicio");  // Devolver el nombre del servicio correspondiente
+            } else {
+                return null;  // Si no se encontró un servicio, devolver null
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al verificar los datos del servicio: " + e.getMessage());
-            return false;
+            return null;  // En caso de error, devolver null
         } finally {
             try {
                 if (rs != null) {
@@ -439,18 +444,42 @@ public class login_como extends javax.swing.JFrame {
         String email = jTextField_email1.getText();
         String password = new String(jPasswordField1.getPassword());
 
-        //verificamos si los campos no estan vacios
+        // Verificar si los campos no están vacíos
         if (email.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor, complete los campos vacios");
+            JOptionPane.showMessageDialog(this, "Por favor, complete los campos vacíos");
             return;
         }
 
-        //llamamos al metodo para verificar los datos ingresados
-        if (verificacionServicio(email, password)) {
-            service_perfil verservice_perfil = new service_perfil();
-            verservice_perfil.setVisible(true);
+        // Llamar al método para verificar los datos ingresados y obtener el servicio
+        String servicio = verificacionServicio(email, password);
+
+        if (servicio != null) {
+            // Dependiendo del servicio, abrir la ventana correspondiente
+            switch (servicio) {
+                case "ambulance_serv":
+                    service_perfil1 verservice_perfil1 = new service_perfil1 ();  // Para el servicio de ambulancia
+                    verservice_perfil1.setVisible(true);
+                    break;
+
+                case "bike_serv":
+                    service_perfil2 verservice_perfil2 = new service_perfil2 ();  // Para el servicio de bicicletas
+                    verservice_perfil2.setVisible(true);
+                    break;
+
+                case "mechanics_serv":
+                    service_perfil verservice_perfil = new service_perfil();  // Para el servicio de mecánica
+                    verservice_perfil.setVisible(true);
+                    break;
+
+                default:
+                    JOptionPane.showMessageDialog(this, "Servicio no reconocido.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;  // Si el servicio no es reconocido, no hacer nada más
+            }
+
+            // Cerrar la ventana de login
             dispose();
         } else {
+            // Si las credenciales son incorrectas o no se encontró el servicio, mostrar un mensaje de error
             JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.");
         }
     }//GEN-LAST:event_iniciar_sesion_button2MouseClicked
@@ -460,7 +489,7 @@ public class login_como extends javax.swing.JFrame {
     }//GEN-LAST:event_iniciar_sesion_button2ActionPerformed
 
     private void register2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_register2ActionPerformed
-      register_como verRegistrar = new register_como();
+        register_como verRegistrar = new register_como();
         verRegistrar.setVisible(true);
         dispose();
     }//GEN-LAST:event_register2ActionPerformed
